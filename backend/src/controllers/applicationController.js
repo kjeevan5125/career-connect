@@ -48,7 +48,7 @@ const getJobApplications = async(req, res)=>{
         });
     }
 
-    if(job.createdBy.toString()!=req.user._id.toString()){
+    if( !job.createdBy || job.createdBy.toString()!=req.user._id.toString()){
         return res.status(403).json({
             message: "You are not authorized to view applications for this job",
         });
@@ -79,7 +79,7 @@ const updateApplicationStatus = async(req, res)=>{
         });
     }
 
-    if(job.createdBy.toString()!=req.user._id.toString()){
+    if( !job.createdBy || job.createdBy.toString()!=req.user._id.toString()){
         return res.status(403).json({
             message: "You are not authorized to update this application",
         });
