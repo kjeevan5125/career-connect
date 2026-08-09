@@ -69,8 +69,19 @@ const MyApplications = () => {
                 </p>
 
                 <p className="mt-4 font-semibold">
-                  Status: {application.status}
-                </p>
+                  Status:{" "}
+                  <span
+                      className={
+                          application.status === "accepted"
+                              ? "text-green-600"
+                              : application.status === "rejected"
+                              ? "text-red-600"
+                              : "text-yellow-600"
+                      }
+                  >
+                      {application.status}
+                  </span>
+              </p>
               </div>
             ))}
           </div>

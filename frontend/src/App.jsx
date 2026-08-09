@@ -14,6 +14,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import EditJobPage from './pages/EditJobPage';
 import LoginPage from './pages/LoginPage';
 import MyApplications from './pages/MyApplications';
+import ApplicantsPage from './pages/ApplicantsPage';
 
 
 
@@ -61,6 +62,7 @@ const App = () => {
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/my-applications" element={<MyApplications />} />
+      <Route path="/applicants/:id" element={<ApplicantsPage />} />
     </Route>)
   );
 

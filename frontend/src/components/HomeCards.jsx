@@ -12,8 +12,8 @@ const HomeCards = () => {
                 <Card>
                     <h2 className="text-2xl font-bold">For Developers</h2>
 
-                    <p className="mt-2 mb-4">
-                        Browse our React jobs and start your career today
+                    <p className="mt-2 mb-4 text-xl">
+                        Explore opportunities that match your skills and career goals.
                     </p>
 
                     <Link
@@ -27,8 +27,8 @@ const HomeCards = () => {
                 <Card bg='bg-indigo-100'>
                     <h2 className="text-2xl font-bold">For Employers</h2>
 
-                    <p className="mt-2 mb-4">
-                        List your job to find the perfect developer for the role
+                    <p className="mt-2 mb-4 text-xl">
+                        Post your job and connect with skilled candidates.
                     </p>
 
                     <Link
