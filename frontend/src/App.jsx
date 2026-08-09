@@ -23,7 +23,7 @@ const App = () => {
   const addJob = async (newJob) => {
     const token = localStorage.getItem('token');
 
-    const res = await fetch('/api/jobs',{
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const App = () => {
   const deleteJob = async(id)=>{
     const token = localStorage.getItem('token');
 
-    const res = await fetch(`/api/jobs/${id}`,{
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${id}`,{
       method: 'DELETE',
       headers: {
           Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ const App = () => {
   const updateJob = async (updatedJob) => {
     const token = localStorage.getItem('token');
 
-    const res = await fetch(`/api/jobs/${updatedJob.id}`,{
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${updatedJob.id}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ const MyApplications = () => {
             const token = localStorage.getItem('token');
 
             try{
-                const res = await fetch('/api/applications/my',{
+                const res = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/my`,{
                     headers:{
                         'Authorization': `Bearer ${token}`
                     }

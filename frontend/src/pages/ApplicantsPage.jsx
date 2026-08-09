@@ -13,7 +13,7 @@ const ApplicantsPage = () => {
       const token = localStorage.getItem("token");
 
       try {
-        const res = await fetch(`/api/applications/job/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/job/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ const ApplicantsPage = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`/api/applications/${applicationId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/${applicationId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

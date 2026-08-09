@@ -29,7 +29,7 @@ const JobPage = ({ deleteJob }) => {
         setApplying(true);
 
         try {
-            const res = await fetch(`/api/applications/${job._id}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/${job._id}`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -203,7 +203,7 @@ const JobPage = ({ deleteJob }) => {
 }
 
 const jobLoader = async ({ params }) => {
-    const res = await fetch(`/api/jobs/${params.id}`);
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/jobs/${params.id}`);
     const data = await res.json();
     return data;
 }
