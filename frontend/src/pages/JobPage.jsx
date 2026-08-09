@@ -138,7 +138,7 @@ const JobPage = ({ deleteJob }) => {
                                     Contact Email:
                                 </h3>
 
-                                <p className="text-xl my-2 bg-indigo-100 p-2 font-bold">
+                                <p className="text-xl my-2 bg-indigo-100 p-2 font-bold break-words">
                                     {job.company.contactEmail}
                                 </p>
 
