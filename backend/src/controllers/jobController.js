@@ -24,14 +24,14 @@ const getJobById = async(req,res)=>{
 const updateJob = async(req,res)=>{
     const job = await Job.findById(req.params.id);
 
+    if(!job){
+        return res.status(404).json({message: "Job not found"});
+    }
+
     if(job.createdBy.toString()!==req.user._id.toString()){
         return res.status(403).json({
             message: "Access denied. You are not authorized to update this job."
         })
-    }
-
-    if(!job){
-        return res.status(404).json({message: "Job not found"});
     }
 
     const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -41,14 +41,14 @@ const updateJob = async(req,res)=>{
 const deleteJob = async(req,res)=>{
     const job = await Job.findById(req.params.id);
 
+    if(!job){
+        return res.status(404).json({message: "Job not found"});
+    }
+
     if (job.createdBy.toString() !== req.user._id.toString()) {
         return res.status(403).json({
             message: "Access denied. You are not authorized to delete this job."
         });
-    }
-
-    if(!job){
-        return res.status(404).json({message: "Job not found"});
     }
 
     await Job.findByIdAndDelete(req.params.id);

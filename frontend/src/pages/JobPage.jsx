@@ -51,12 +51,12 @@ const JobPage = ({ deleteJob }) => {
         }
     }
 
-    const onDeleteClick = (jobId) => {
+    const onDeleteClick = async(jobId) => {
         const confirm = window.confirm('Are you sure you want to delete this job?');
 
         if (!confirm) return;
 
-        deleteJob(jobId);
+        await deleteJob(jobId);
         toast.success('Job deleted successfully');
         navigate('/jobs');
     }
@@ -85,32 +85,32 @@ const JobPage = ({ deleteJob }) => {
                                     {job.type}
                                 </div>
 
-                                <h1 className="text-3xl font-bold mb-4">
+                                <h1 className="text-4xl font-bold mb-4">
                                     {job.title}
                                 </h1>
 
                                 <div className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start">
                                     <FaMapMarker className='text-orange-700 mr-1' />
-                                    <p className="text-orange-700">
+                                    <p className="text-orange-700 text-lg">
                                         {job.location}
                                     </p>
                                 </div>
                             </div>
 
                             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                                <h3 className="text-indigo-800 text-lg font-bold mb-6">
+                                <h3 className="text-indigo-800 text-2xl font-bold mb-6">
                                     Job Description
                                 </h3>
 
-                                <p className="mb-4">
+                                <p className="mb-4 text-xl">
                                     {job.description}
                                 </p>
 
-                                <h3 className="text-indigo-800 text-lg font-bold mb-2">
+                                <h3 className="text-indigo-800 text-2xl font-bold mb-2">
                                     Salary
                                 </h3>
 
-                                <p className="mb-4">
+                                <p className="mb-4 text-lg">
                                     {job.salary}
                                 </p>
                             </div>
@@ -124,11 +124,11 @@ const JobPage = ({ deleteJob }) => {
                                     Company Info
                                 </h3>
 
-                                <h2 className="text-2xl">
+                                <h2 className="text-3xl">
                                     {job.company.name}
                                 </h2>
 
-                                <p className="my-2">
+                                <p className="text-xl my-2 text-xl">
                                     {job.company.description}
                                 </p>
 
@@ -138,7 +138,7 @@ const JobPage = ({ deleteJob }) => {
                                     Contact Email:
                                 </h3>
 
-                                <p className="my-2 bg-indigo-100 p-2 font-bold">
+                                <p className="text-xl my-2 bg-indigo-100 p-2 font-bold">
                                     {job.company.contactEmail}
                                 </p>
 
@@ -146,7 +146,7 @@ const JobPage = ({ deleteJob }) => {
                                     Contact Phone:
                                 </h3>
 
-                                <p className="my-2 bg-indigo-100 p-2 font-bold">
+                                <p className="text-xl my-2 bg-indigo-100 p-2 font-bold">
                                     {job.company.contactPhone}
                                 </p>
                             </div>

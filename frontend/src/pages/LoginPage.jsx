@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LoginPage = () =>{
     const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const LoginPage = () =>{
 
             const data = await res.json();
             if(!res.ok){
-                alert(data.message);
+                toast(data.message);
                 return;
             }
 
@@ -78,6 +79,17 @@ const LoginPage = () =>{
               Login
             </button>
           </form>
+
+          <p className="text-center mt-4">
+              Don't have an account?{" "}
+              <button
+                  type="button"
+                  onClick={() => navigate("/register")}
+                  className="text-indigo-500 hover:text-indigo-600 font-semibold"
+              >
+                  Register
+              </button>
+          </p>
         </div>
       </div>
     </section>
