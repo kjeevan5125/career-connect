@@ -58,7 +58,7 @@ const Navbar = () => {
               </NavLink>
 
               <div className="md:ml-auto">
-                <div className="flex flex-wrap justify-end gap-1 md:gap-2">
+                <div className="flex flex-wrap justify-center md:justify-end gap-1 md:gap-2">
                   <NavLink
                     to="/"
                       className={linkClass}
