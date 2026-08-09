@@ -1,8 +1,36 @@
 import React from 'react';
 import logo from '../images/logo.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {getUserFromToken} from '../utils/auth';
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem('token')
+  );
+
+  const user = getUserFromToken();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkAuth = () => {
+      setIsLoggedIn(!!localStorage.getItem('token'));
+    }
+
+    window.addEventListener("authChange",checkAuth);
+    return () => {
+      window.removeEventListener("authChange",checkAuth);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    window.dispatchEvent(new Event("authChange"));
+    navigate('/login');
+  }
+
   const linkClass = ({isActive}) =>
     isActive
       ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
@@ -45,12 +73,39 @@ const Navbar = () => {
                     Jobs
                   </NavLink>
 
-                  <NavLink
-                    to="/add-job"
-                    className={linkClass}
-                  >
-                    Add Job
-                  </NavLink>
+                  {user?.role === "candidate" && (
+                    <NavLink
+                      to="/my-applications"
+                      className={linkClass}
+                    >
+                      My Applications
+                    </NavLink>
+                  )}
+
+                  {user?.role=="employer" &&(
+                    <NavLink
+                      to="/add-job"
+                      className={linkClass}
+                    >
+                      Add Job
+                    </NavLink>
+                  )}
+
+                  {isLoggedIn ? (
+                    <button
+                      onClick={handleLogout}
+                      className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                    >
+                      Logout
+                    </button>
+                  ) : (
+                    <NavLink
+                      to="/login"
+                      className={linkClass}
+                    >
+                      Login
+                    </NavLink>
+                  )}
                 </div>
               </div>
 
