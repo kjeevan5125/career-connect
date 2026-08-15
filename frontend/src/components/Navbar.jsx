@@ -52,7 +52,7 @@ const Navbar = () => {
                   src={logo}
                   alt="Career Connect"
                 />
-                <span className="hidden md:block text-white text-3xl font-bold ml-2">
+                <span className="hidden md:block text-white text-4xl font-bold ml-2">
                   Career Connect
                 </span>
               </NavLink>
